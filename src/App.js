@@ -6,7 +6,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       city: '',
-      starWarsChars: [],
+      lon: '',
+      lat: '',
+      theCity: [],
       cityData: {},
       error: false,
       errorMessage: ''
@@ -17,10 +19,10 @@ class App extends React.Component {
     event.preventDefault();
     try {
   
-      let starWarsCharacters = await axios.get('https://swapi.dev/api/people/?page=1');
+      let cityLocation = await axios.get('https://swapi.dev/api/people/?page=1');
      
       this.setState({
-        starWarsChars: starWarsCharacters.data.results,
+        theCity: cityLocation.data.results,
         error: false
       });
     } catch (error) {
@@ -50,19 +52,17 @@ class App extends React.Component {
   render() {
   
 
-    // map image src
-    // `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=47.6038321,-122.3300624&zoom=10`
+    
 
-
-    let starWarList = this.state.starWarsChars.map((character, idx) => {
+    let cityList = this.state.theCity.map((character, idx) => {
       return <li key={idx}>{character.name}</li>;
     })
 
     return (
       <>
-        <h1>Data from an API</h1>
+      <h1>Data from an API</h1>
         <form onSubmit={this.handleSubmit}>
-          <button type="submit">Display Star Wars data</button>
+        <button type="submit">City data</button>
         </form>
         {/* WTF */}
         {this.state.error
@@ -70,11 +70,11 @@ class App extends React.Component {
           ? <p>{this.state.errorMessage}</p>
           
           : <ul>
-            {starWarList}
+          {cityList}
           </ul>
         }
         <form onSubmit={this.handleCitySubmit}>
-          <label>Pick a City:
+          <label>Choose a City:
             <input type="text" onInput={this.handleCityInput} />
           </label>
           <button type="submit">Get City Data</button>
