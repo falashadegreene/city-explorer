@@ -16,11 +16,9 @@ class App extends React.Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      // make a request to the SW API and get data
+  
       let starWarsCharacters = await axios.get('https://swapi.dev/api/people/?page=1');
-      // proof of life
-      // console.log(starWarsCharacters.data.results);
-      // save the data in state
+     
       this.setState({
         starWarsChars: starWarsCharacters.data.results,
         error: false
@@ -43,15 +41,14 @@ class App extends React.Component {
 
   handleCitySubmit = async (e) => {
     e.preventDefault();
-    // make my request to my API
+  
     let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`;
     let cityInfo = await axios.get(url);
     console.log(cityInfo.data[0]);
   }
 
   render() {
-    // console.log(this.state.starWarsChars);
-    // console.log(this.state.city);
+  
 
     // map image src
     // `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=47.6038321,-122.3300624&zoom=10`
@@ -69,9 +66,9 @@ class App extends React.Component {
         </form>
         {/* WTF */}
         {this.state.error
-          // render the error message:
+          
           ? <p>{this.state.errorMessage}</p>
-          // render the star wars list:
+          
           : <ul>
             {starWarList}
           </ul>
