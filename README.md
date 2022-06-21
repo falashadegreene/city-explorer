@@ -30,4 +30,4 @@ Finish time: _____
 
 Actual time needed to complete: _____
 
-![Domain Image](img/web_request_response.jpg)
+![Domain Image](img/web-request.JPG)
