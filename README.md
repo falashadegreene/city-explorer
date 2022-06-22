@@ -1,3 +1,14 @@
+
+Name of feature: _________City Explore Map API_______________________
+
+Estimate of time needed to complete: __4hours___
+
+Start time: __4:30pm EST___
+
+Finish time: Tuesday_8:00pmEST____
+
+Actual time needed to complete: __2 days___
+
 # City Explorer
 
 **Author**: Falashade
@@ -20,14 +31,5 @@
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
-Name of feature: ________________________________
 
-Estimate of time needed to complete: _____
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
-
-![Domain Image](img/web-request.JPG)
+![Domain Image](web-cyle.png)
