@@ -1,39 +1,20 @@
 import React from 'react';
 import axios from 'axios';
+import './App.css';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Image from 'react-bootstrap/Image'
+
 
 class App extends React.Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {
       city: '',
-      lon: '',
-      lat: '',
       theCity: [],
-      cityData: {},
       error: false,
       errorMessage: ''
     };
   }
-
-  handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-  
-      let cityLocation = await axios.get('https://swapi.dev/api/people/?page=1');
-     
-      this.setState({
-        theCity: cityLocation.data.results,
-        error: false
-      });
-    } catch (error) {
-      console.log('error: ', error)
-      console.log('error.message: ', error.message);
-      this.setState({
-        error: true,
-        errorMessage: `An Error Occurred: ${error.response.status}`
-      });
-    }
-  };
 
   handleCityInput = (e) => {
     this.setState({
@@ -41,47 +22,51 @@ class App extends React.Component {
     });
   };
 
-  handleCitySubmit = async (e) => {
-    e.preventDefault();
-  
-    let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`;
-    let cityInfo = await axios.get(url);
-    console.log(cityInfo.data[0]);
-  }
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      let listOfCities =  await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`);
+      this.setState({
+        theCity: listOfCities.data
+      });
+    } catch (error) {
+      this.setState({
+        error: true,
+        errorMessage: `Oops an error occurred! Status code: ${error.response.status}`
+      });
+    };
+  };
 
-  render() {
-  
-
-    
-
-    let cityList = this.state.theCity.map((character, idx) => {
-      return <li key={idx}>{character.name}</li>;
+  render(){
+    let cityList = this.state.theCity.map((city, idx) => {
+      return <div
+      key={idx}
+    >
+      <div>
+        <div>{city.display_name}</div>
+        Latitude: {city.lat}  
+        Longitude: {city.lon}
+      </div>
+      <Image src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${city.lat},${city.lon}&zoom=18`} alt="map of city"/>
+    </div>
     })
-
     return (
-      <>
-      <h1>Data from an API</h1>
+      <main>
+        <h1>Search Your City!</h1>
         <form onSubmit={this.handleSubmit}>
-        <button type="submit">City data</button>
+          <input type="text" onInput={this.handleCityInput}></input>
+          <button type="submit">Explore!</button>
         </form>
-        {/* WTF */}
         {this.state.error
-          
           ? <p>{this.state.errorMessage}</p>
-          
-          : <ul>
-          {cityList}
-          </ul>
+          : <ListGroup>
+              {cityList}
+            </ListGroup>
         }
-        <form onSubmit={this.handleCitySubmit}>
-          <label>Choose a City:
-            <input type="text" onInput={this.handleCityInput} />
-          </label>
-          <button type="submit">Get City Data</button>
-        </form>
-      </>
+      </main>
     );
   }
 }
+
 
 export default App;
