@@ -1,14 +1,17 @@
 import React from 'react';
 import axios from 'axios';
+import Weather from './Weather.js';
 import './App.css';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Image from 'react-bootstrap/Image'
+import Image from 'react-bootstrap/Image';
 
 
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      weather: [],
+      searchQuery: '',
       city: '',
       theCity: [],
       error: false,
@@ -35,7 +38,28 @@ class App extends React.Component {
         errorMessage: `Oops an error occurred! Status code: ${error.response.status}`
       });
     };
-  };
+
+     this.handleGetWeather();
+  }
+  
+
+    handleGetWeather = async () => {
+      let url = `http://localhost:3001/weather?searchQuery=${this.state.city}`
+
+    try {
+      let weather = await axios.get(url);
+      this.setState({
+      weather: weather.data,
+      showWeather: true
+    });
+    }catch (error){
+      this.setState({
+      Weathererror: true,
+      WeatherErrorMessage: `Oops, Error loading weather results. ${error.response.status}`
+    })
+   }
+  }
+
 
   render(){
     let cityList = this.state.theCity.map((city, idx) => {
@@ -63,7 +87,12 @@ class App extends React.Component {
               {cityList}
             </ListGroup>
         }
+       <Weather  
+       weather={this.state.weather}>
+        
+       </Weather>
       </main>
+      
     );
   }
 }
