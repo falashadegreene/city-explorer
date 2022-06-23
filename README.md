@@ -1,13 +1,13 @@
 
-Name of feature: _________City Explore Map API_______________________
+Name of feature: _________City Explore front-end weather js componet______________________
 
-Estimate of time needed to complete: __4hours___
+Estimate of time needed to complete: __2hours___
 
-Start time: __4:30pm EST___
+Start time: __4:30pm EST__Tuesday_
 
-Finish time: Tuesday_8:00pmEST____
+Finish time: Wednesday_12:00pmEST____
 
-Actual time needed to complete: __2 days___
+Actual time needed to complete: __1 day___
 
 # City Explorer
 
@@ -33,3 +33,4 @@ Actual time needed to complete: __2 days___
 
 
 ![Domain Image](web-cyle.png)
+![Domain Image](web-cycle2.png)
