@@ -29,25 +29,27 @@ class App extends React.Component {
     event.preventDefault();
     try {
       let listOfCities =  await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`);
+      
       this.setState({
         theCity: listOfCities.data
       });
+      this.handleGetWeather(listOfCities.data[0].lat, listOfCities.data[0].lon);
     } catch (error) {
       this.setState({
         error: true,
         errorMessage: `Oops an error occurred! Status code: ${error.response.status}`
       });
     };
-
-     this.handleGetWeather();
+     
   }
   
 
-    handleGetWeather = async () => {
-      let url = `http://localhost:3001/weather?searchQuery=${this.state.city}`
+    handleGetWeather = async (lat, lon) => {
+      let url =`http://localhost:3001/weather?latResult=${lat}&lonResult=${lon}`
 
     try {
       let weather = await axios.get(url);
+      console.log(weather);
       this.setState({
       weather: weather.data,
       showWeather: true
