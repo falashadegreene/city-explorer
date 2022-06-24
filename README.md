@@ -1,5 +1,5 @@
 
-Name of feature: _________City Explore front-end weather js componet______________________
+Name of feature: _________City Explore front-end weather js componet__rendered weather forecast____________________
 
 Estimate of time needed to complete: __2hours___
 
@@ -8,6 +8,12 @@ Start time: __4:30pm EST__Tuesday_
 Finish time: Wednesday_12:00pmEST____
 
 Actual time needed to complete: __1 day___
+
+Collaborators 
+
+- Dom Giacona
+- Elaine Huynh
+- Stephanie Hill 
 
 # City Explorer
 
@@ -34,3 +40,5 @@ Actual time needed to complete: __1 day___
 
 ![Domain Image](web-cyle.png)
 ![Domain Image](web-cycle2.png)
+![Domain Image](wrrc-3.png)
+
