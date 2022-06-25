@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Weather from './Weather.js';
+import Movies from './Movies';
 import './App.css';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Image from 'react-bootstrap/Image';
@@ -15,7 +16,9 @@ class App extends React.Component {
       city: '',
       theCity: [],
       error: false,
-      errorMessage: ''
+      errorMessage: '',
+      movies: [],
+     showMovie: false,
     };
   }
 
@@ -34,6 +37,7 @@ class App extends React.Component {
         theCity: listOfCities.data
       });
       this.handleGetWeather(listOfCities.data[0].lat, listOfCities.data[0].lon);
+      this.handleGetMovies(this.state.city);
     } catch (error) {
       this.setState({
         error: true,
@@ -57,11 +61,25 @@ class App extends React.Component {
     }catch (error){
       this.setState({
       Weathererror: true,
-      WeatherErrorMessage: `Oops, Error loading weather results. ${error.response.status}`
+      WeatherErrorMessage: `Oops, Error loading weather results.${error.response.status}`
     })
    }
   }
 
+   handleGetMovies = async (searchQuery) => {
+     let url = `http://localhost:3001/movies?searchQuery=${searchQuery}`
+
+     try{
+       let movies = await axios.get(url);
+       this.setState({
+        movies: movies.data,
+        showMovie: true
+     })
+   }
+    catch(error){
+      console.log(error);
+    }
+  }
 
   render(){
     let cityList = this.state.theCity.map((city, idx) => {
@@ -93,6 +111,11 @@ class App extends React.Component {
        weather={this.state.weather}>
         
        </Weather>
+       
+       
+       <Movies
+       movies ={this.state.movies}
+       ></Movies>
       </main>
       
     );
