@@ -1,17 +1,31 @@
+
 import React from 'react';
-import { ListGroupItem } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-class Movie extends React.Component{
-  render(){
-    return(
-      <ListGroup>
-        <ListGroupItem>{this.props.title}</ListGroupItem>
-        <ListGroupItem>{this.props.overview}
-        </ListGroupItem>
-      </ListGroup>
+class Movies extends React.Component {
+
+  render() {
+
+    let showMovies = this.props.movies.map((show, index) =>
+      <Card key={index}>
+        <Card.Text>
+          <ListGroup variant="flush">
+            <ListGroup.Item>{show.title}</ListGroup.Item>
+            <ListGroup.Item>{show.overview}</ListGroup.Item>
+          </ListGroup>
+        </Card.Text>
+      </Card>
+
+    )
+
+    return (
+      <>
+      {showMovies}
+      </>
     )
   }
 }
 
-export default Movie;
+
+export default Movies;
