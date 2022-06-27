@@ -1,13 +1,13 @@
 
-Name of feature: _________City Explore front-end weather js componet__rendered weather forecast____________________
+Name of feature: ___City Explore front-end Movies js componet__
 
 Estimate of time needed to complete: __2hours___
 
-Start time: __4:30pm EST__Tuesday_
+Start time: __4:30pm EST__Wednesday
 
-Finish time: Wednesday_12:00pmEST____
+Finish time: Sunday_8:00pmEST____
 
-Actual time needed to complete: __1 day___
+Actual time needed to complete: __4 days__
 
 Collaborators 
 
