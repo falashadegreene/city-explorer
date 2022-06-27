@@ -3,17 +3,18 @@ Name of feature: ___City Explore front-end Movies js componet__
 
 Estimate of time needed to complete: __2hours___
 
-Start time: __4:30pm EST__Wednesday
+Start time: __10:30pm EST__Sunday
 
-Finish time: Sunday_8:00pmEST____
+Finish time: Monday 1 am EST____
 
-Actual time needed to complete: __4 days__
+Actual time needed to complete: __3 hours__
 
 Collaborators 
 
 - Dom Giacona
 - Elaine Huynh
-- Stephanie Hill 
+- Stephanie Hill
+- Rui Guo
 
 # City Explorer
 
@@ -41,4 +42,5 @@ Collaborators
 ![Domain Image](web-cyle.png)
 ![Domain Image](web-cycle2.png)
 ![Domain Image](wrrc-3.png)
+![Domain Image](wrrc-4.png)
 
