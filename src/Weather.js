@@ -12,8 +12,8 @@ class Weather extends React.Component{
         <tbody>
           {this.props.weather.map((theDate, idx) => (
             <tr key={idx}>
-              <td>{theDate.date}</td>
-              <td>{theDate.description}</td>
+              <td>{theDate.datetime}</td>
+              <td>{theDate.weather.description}</td>
             </tr>
           ))}
         </tbody>
